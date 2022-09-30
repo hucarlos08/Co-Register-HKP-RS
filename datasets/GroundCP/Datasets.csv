@@ -1,8 +1,5 @@
 Name,Path,Target,Reference,CP_csv,Affine_HOPC,Output_Path
 Lidar-Optical,datasets/GroundCP/Lidar-Optical/,visible1_ref.tif,LiDARintensity1_sen.tif,VisibleToLiDAR1.csv,affine_hopc.npy,Results/
 Optical-Lidar1,datasets/GroundCP/Optical-Lidar1/,LidarDepth_ref.png,optical1_sen.png,LidartoOptical_CP.csv,affine_hopc.npy,Results/
-Optical-Lidar2,datasets/GroundCP/Optical-Lidar2/,visible2_ref.png,LiDARintensity2_sen.png,VisibleToLiDAR2.csv,affine_hopc.npy,Results/
-Optical-Map1,datasets/Optical-Map1/,optical1_ref.tif,map1_sen.tif,opticalToMap1_CP.csv,affine_hopc.npy,Results/
-Optical-Map2,datasets/GroundCP/Optical-Map2/,optical2_ref.tif,map2_sen.tif,opticalToMap2_CP.csv,affine_hopc.npy,Results/
 Optical-SAR,datasets/GroundCP/Optical-SAR/,optical_ref.png,SAR_sen.png,OpticaltoSAR_CP.csv,affine_hopc.npy,Results/
 Visible-infrared2,datasets/GroundCP/Visible-infrared2/,visible_ref.tif,infrared_sen.tif,VisibletoInfrared_CP.csv,affine_hopc.npy,Results/

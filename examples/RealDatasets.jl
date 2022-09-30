@@ -26,7 +26,7 @@ using NPZ
 
 df      = CSV.read("datasets/GroundCP/Datasets.csv", DataFrame);
 
-dataset = eachcol(df[df.Name .== "Visible-infrared2", :]);
+dataset = eachcol(df[df.Name .== "Lidar-Optical", :]);
 
 path            = dataset.Path[1];
 file_target     = path * dataset.Target[1];
