@@ -81,10 +81,6 @@ reference_result = warp(reference, minimizer(solution), NaN, PrivateThreads());
 
 zero_image = zeros(size(reference));
 
-# RGB_diffview_init = colorview(BGR, channelview(reference), channelview(target), zero_image);
-# RGB_diffview_final = colorview(BGR, channelview(reference_result), channelview(target), zero_image);
-# mosaicview(RGB_diffview_init, RGB_diffview_final; ncol = 2)
-
 ## ================================================= VIEW HKP =================================================
 
 # Estimate difference
@@ -111,36 +107,3 @@ mosaic2_name = output_path * "mosaic2.png"
 
 Images.save(mosaic1_name, mosaic_init);
 Images.save(mosaic2_name, mosaic_result);
-
-## ========================================= Estimate error ================================================
-
-# Get classicn HKP solution
-x_optimum = minimizer(solution)
-
-# Get affin transformation
-off_x, off_y = center(image_reference)
-
-# Get the esimated affin transformation
-M, t    = get_affin_from_params(x_optimum, [off_x, off_y]);
-Mi, ti  = get_inverse_affin(M, t);
-
-H       = convert_affine_to_homogeneous(M,t);
-Hi      = convert_affine_to_homogeneous(Mi,ti);
-
-# Transform coordinates
-Hp = ([
-    Hi[2,2] Hi[2,1] Hi[2,3];
-    Hi[1,2] Hi[1,1] Hi[1,3]
-])
-
-##================================== VIEw HOC ===================================================
-Hhopc = npzread(file_aff_hopc)
-
-rmse_hkp, points_hkp, mask_hkp      = affin_rmse(cp, Hp, 1.5);
-rmse_hopc, points_hopc, mask_hopc   = affin_rmse(cp, Hhopc, 1.5);
-
-mae_hkp, points_hkp, mask_hkp      = affin_mae(cp, Hp, 1.5);
-mae_hopc, points_hopc, mask_hopc   = affin_mae(cp, Hhopc, 1.5);
-
-println("RMSE. HKP($rmse_hkp), HOPC($rmse_hopc)")
-println("MAE.  HKP($mae_hkp), HOPC($mae_hopc)")
